@@ -1,0 +1,10 @@
+.div-album {
+	width: 250px;
+	background-color: #f2f2f2;
+	padding: 5px;
+	margin: 5px;
+	border: solid 1px #464646;	
+}
+hr {
+	visibility: hidden;
+}
