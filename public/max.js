@@ -11,8 +11,9 @@ class Note extends React.Component {
 class InputDiv extends React.Component {
 	send(){
 		list.setState({
-			mang : list.state.mang.concat(this.refs.txt.value)
+			mang : list.state.mang.concat(this.refs.txt.value),
 		});
+		ReactDOM.unmountComponentAtNode(document.getElementById('div-add'))
 	}
 	constructor(props) {
 		super(props);
@@ -33,7 +34,7 @@ class List extends React.Component {
 		super(props);
 		list = this;
 		this.state = {
-			mang: ["Hello World !",  "Project JS", "By Adam Baylin"],
+			mang: [],
 		}
 
 	}
@@ -49,6 +50,12 @@ class List extends React.Component {
 		 	}
 		 </div>
 		);
+	}
+	componentDidMount(){
+		var that = this;
+		$.post('/getNotes', function(data){
+			that.setState({mang: data});
+		});
 	}
 }
 
